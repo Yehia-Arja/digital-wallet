@@ -19,7 +19,7 @@ a{
     color: white;
     text-decoration: none;
 }
-/*start of home page*/
+/*start of home,services page*/
 .header {
     margin-bottom: 40px;
     width: 100%;
@@ -184,7 +184,10 @@ html::-webkit-scrollbar {
     gap: 20px;
 }
 
-/*End of home page*/
+.services-header {
+    margin-bottom: 100px;
+}
+/*End of home,services page*/
 
 
 /*Start of login-signup page*/
@@ -270,6 +273,8 @@ html::-webkit-scrollbar {
     border-radius: 8px;
     cursor: pointer;
 }
+
+/*End of login-signup page*/
 
 
 
