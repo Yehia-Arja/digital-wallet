@@ -19,6 +19,11 @@ a{
     color: white;
     text-decoration: none;
 }
+.back-arrow {
+    font-size: 2em;
+    cursor: pointer;
+    transition: 0.3s;
+}
 /*start of home,services page*/
 .header {
     margin-bottom: 40px;
@@ -190,38 +195,44 @@ html::-webkit-scrollbar {
 /*End of home,services page*/
 
 
-/*Start of login-signup page*/
+/*Start of login-signup,withdraw,deposit page*/
 .login-header,
-.signup-header {
+.signup-header,
+.withdraw-header {
     text-align: center;
     font-size: 1em;
 }
-.login-header > h1
-.signup-header > h1 {
+.login-header > h1,
+.signup-header > h1,
+.withdraw-header > h1 {
     font-weight: bold;
     margin-top: 50px;
     margin-bottom: 20px;
     color: white
 }
 .login-header > p,
-.signup-header > p {
+.signup-header > p,
+.withdraw-header > p {
     font-size: 1em;
     color: gray;
 }
 
 .login-form label, 
-.signup-form label {
+.signup-form label,
+.withdraw-form label {
     display: flex;
     color: white;
 }
 .login-main,
-.signup-main {
+.signup-main,
+.withdraw-main {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .login-form,
-.signup-form {
+.signup-form,
+.withdraw-form {
     display: flex;
     background-color: rgba(20, 20, 20, 0.9);
     flex-direction: column;
@@ -230,7 +241,8 @@ html::-webkit-scrollbar {
     width: 600px;
 }
 .login-form input,
-.signup-form input {
+.signup-form input,
+.withdraw-form input {
     border: none;
     border-bottom: 1px solid white;
     outline: none;
@@ -240,7 +252,8 @@ html::-webkit-scrollbar {
 
 }
 .login-button,
-.signup-button {
+.signup-button,
+.withdraw-button {
     border: none;
     background-color: transparent;
     color: white;
@@ -249,13 +262,15 @@ html::-webkit-scrollbar {
     transition: 0.3s;
 }
 .login-section div,
-.signup-section div {
+.signup-section div,
+.withdraw-section div {
     margin-top: 10px;
     text-align: center;
 }
 
 .login-button:hover,
-.signup-button:hover {
+.signup-button:hover,
+.withdraw-button:hover {
     border: 1px solid white;
     background-color: rgba(255,255,255,0.7);
     box-shadow: 0 0 45px rgba(255, 255, 255, 0.8);
@@ -263,8 +278,10 @@ html::-webkit-scrollbar {
     border-radius: 8px;
 }
 
+
 .redirect-signup:hover,
 .redirect-login:hover {
+    transition: 0.3s;
     color:white;
     border: 1px solid white;
     background-color: rgba(255,255,255,0.7);
@@ -274,10 +291,165 @@ html::-webkit-scrollbar {
     cursor: pointer;
 }
 
-/*End of login-signup page*/
+/*End of login-signup withdraw deposit page*/
 
 
 
+
+
+/*Start of wallet,cards page*/
+.wallet-main,
+.cards-main,
+.transaction-main {
+    width: 100vw;
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+    padding: 20px;
+}
+ 
+.wallet-container h1,
+.cards-container h1
+.transaction-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: white;
+}
+
+.create-wallet,
+.create-card {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    background-color: rgb(0, 255, 136);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.create-wallet:hover,
+.create-card:hover {
+    opacity: 0.9;
+}
+
+.wallet-container,
+.cards-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wallet-container h1,
+.cards-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.wallet-list,
+.cards-list,
+.transaction-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wallet-card,
+.transaction-layout {
+    background-color: rgb(30, 30, 30);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wallet-info h2,
+.card-info h2,
+.transaction-info h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: rgb(0, 255, 136);
+}
+
+.wallet-info p,
+.card-info p,
+.transaction-info p {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.wallet-info span,
+.card-info span,
+.transaction-info span {
+    color: white;
+    font-weight: bold;
+}
+
+.wallet-actions,
+.card-actions,
+.transaction-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.button.deposit {
+    background-color: rgb(0, 255, 136);
+    color: rgb(18, 18, 18);
+}
+
+.button.withdraw {
+    background-color: rgb(255, 107, 107);
+    color: rgb(18, 18, 18);
+}
+
+.button.delete {
+    background-color: rgb(255, 59, 59);
+    color: rgb(18, 18, 18);
+}
+.button.transfer {
+    background-color: rgb(0, 60, 255);
+    color: rgb(18, 18, 18);
+}
+.button:hover {
+    opacity: 0.9;
+}
+
+
+/*End of wallet page*/
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wallet-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .wallet-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .btn {
+        width: 30%;
+    }
+}
 
 @media (max-width: 1024px) {
     .header-message {
