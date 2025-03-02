@@ -1,5 +1,6 @@
 <?php
-require_once '../connection.php';
+require_once __DIR__ . '/../connection.php';
+
 
 class Users{
     private static function checkError($sql) {
@@ -54,25 +55,11 @@ class Users{
         $hashed_password = $data['hashed_password'];
         $address = $data['address'];
         $id_url = $data['id_url'];
-        $sql = '';
+        $user_type_id = $data['user_type_id'];
 
-        if (!empty($email)) {
-            $sql = $conn->prepare('INSERT INTO users (username,email,password,address,id_docment)
-            VALUES (?,?,?,?,?)');
-            $sql->bind_param('sssss', $username, $email, $hashed_password, $address, $id_url);
-        }
-
-        if (!empty($phone_number)) {
-            $sql = $conn->prepare('INSERT INTO users (username,phone_number,password,address,id_docment)
-            VALUES (?,?,?,?,?)');
-            $sql->bind_param('sssss', $username, $phone_number, $hashed_password, $address, $id_url);
-        }
-        
-        if (!empty($email) && !empty($password)) {
-            $sql = $conn->prepare('INSERT INTO users (username,email,phone_number,password,address,id_document)
-            VALUES (?,?,?,?,?,?');
-            $sql->bind_param('ssssss', $username, $email,$phone_number, $hashed_password, $address, $id_url);
-        }
+        $sql = $conn->prepare('INSERT INTO users (username,email,phone_number,password,address,id_document,user_type_id)
+        VALUES (?,?,?,?,?,?,?)');
+        $sql->bind_param('ssssssi', $username, $email,$phone_number, $hashed_password, $address, $id_url,$user_type_id);
         
         if (!self::checkError($sql)) {
             return false;
@@ -83,7 +70,7 @@ class Users{
         $email = $data['email'];
         $phone_number = $data['phone_number'];
 
-        $sql = $conn->prepare('SELECT user_id WHERE email = ? OR phone_number = ?');
+        $sql = $conn->prepare('SELECT user_id FROM users WHERE email = ? OR phone_number = ?');
         $sql->bind_param('ss', $email, $phone_number);
         
         if (!self::checkError($sql)) {

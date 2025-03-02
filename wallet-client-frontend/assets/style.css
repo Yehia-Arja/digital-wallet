@@ -280,7 +280,8 @@ html::-webkit-scrollbar {
 
 
 .redirect-signup:hover,
-.redirect-login:hover {
+.redirect-login:hover,
+.redirect-reset-password:hover {
     transition: 0.3s;
     color:white;
     border: 1px solid white;
