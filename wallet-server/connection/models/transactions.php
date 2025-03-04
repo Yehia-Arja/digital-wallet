@@ -1,13 +1,16 @@
 <?php
 require_once __DIR__ . '/../connection.php';
 
-class Transactions {
+class Transaction {
     public static function createTransaction($user_id,$walletId, $type, $amount, $status = 'pending') {
         global $conn;
 
         $sql = $conn->prepare("INSERT INTO transactions (user_id,wallet_id, type, amount, status) VALUES (?,?, ?, ?, ?)");
         $sql->bind_param("iisds",$user_id, $walletId, $type, $amount, $status);
-        return $sql->execute();
+        if ($sql->execute()) {
+            return $sql->insert_id;
+        }
+        return false;
     }
 
     public static function getTransactionById($transactionId) {
@@ -43,4 +46,5 @@ class Transactions {
         $sql->bind_param("si", $newStatus, $transactionId);
         return $sql->execute();
     }
+    
 }
