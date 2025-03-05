@@ -18,10 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['user_id'])) {
     $username = $user['username'];
     $address = $user['address'];
     
-
-   
-
-    return json_encode(['success ' => true, 'message' => [$username,$address]]);
-    
+    echo json_encode(['success ' => true, 'message' => [$username,$address]]);
+    return;
+      
 
 }

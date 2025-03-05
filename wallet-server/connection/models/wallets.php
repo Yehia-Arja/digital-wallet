@@ -26,13 +26,13 @@ class Wallet {
         global $conn;
 
         $sql = "SELECT * FROM wallets WHERE wallet_number = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $wallet_number);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $sql = $conn->prepare($sql);
+        $sql->bind_param("s", $wallet_number);
+        $sql->execute();
+        $result = $sql->get_result();
         $wallet = $result->fetch_assoc();
         
-        return $wallet ? $wallet['wallet_id'] : null;
+        return $wallet ? $wallet['id'] : null;
     }
     public static function getBalance($wallet_id) {
         global $conn;

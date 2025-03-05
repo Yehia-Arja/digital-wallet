@@ -13,6 +13,19 @@ class Transaction {
         return false;
     }
 
+     public static function countTransactions() {
+        global $conn;
+
+        $sql = "SELECT COUNT(*) AS transaction_count FROM transactions";
+        $result = mysqli_query($conn,$sql);
+
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['transaction_count'];
+        }
+        return $result;
+    }
+
     public static function getTransactionById($transactionId) {
         global $conn;
 

@@ -6,9 +6,10 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS'); 
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
-$upload_dir = __DIR__ . "/../uploads/"; 
+$upload_dir = __DIR__ . "/../../../uploads/"; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
     $email = $_POST['email'] ?? '';
     $phone_number = $_POST['phoneNumber'] ?? ''; 
     $password = $_POST['password'] ?? '';
@@ -25,6 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['success' => false, 'message' => 'No file uploaded.']);
         return;
     }
+    if (User::checkPhone($phone_number)) {
+        echo json_encode(['success' => false, 'message' => 'Phone number already linked to an account']);
+        return;
+    }
 
     $file_name = time() . "_" . basename($_FILES["file"]["name"]);
     $file_path = $upload_dir . $file_name;
@@ -35,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         return;
     }
 
-    if (empty($email) || empty($phone_number) || empty($password) || empty($confirm_password) || empty($username) || empty($address)) {
+    if (empty($email) || empty($password) || empty($confirm_password) || empty($username) || empty($address)) {
         echo json_encode(['success' => false, 'message' => 'Missing required fields.']);
         return;
     }
@@ -51,16 +56,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    if (!User::createUser($email, $phone_number, $hashed_password, $username,$address ,$file_url)) {
-        echo json_encode(['success' => false, 'message' => 'Failed to create account.']);
-        return;
-    }
+    User::createUser($email, $phone_number, $hashed_password, $username, $address, $file_url);
 
     $new_user = User::getUserByEmail($email);
+
     if ($new_user && isset($new_user['user_id'])) {
         echo json_encode(['success' => true, 'message' => $new_user['user_id']]);
+
     } else {
         echo json_encode(['success' => false, 'message' => 'Error fetching user after creation.']);
+
     }
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);

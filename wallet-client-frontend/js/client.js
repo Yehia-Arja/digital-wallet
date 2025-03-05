@@ -15,9 +15,8 @@ const displayMessage = (message, success) => {
 }
 
 pages.signupPage = () => {
-    console.log('hey there');
-    const signup_button = document.getElementById('signup-button');
-    signup_button.addEventListener('click', handleSignup);
+    const signupButton = document.getElementById('signup-button');
+    signupButton.addEventListener('click', handleSignup);
 }
 
 const handleSignup = async () => {
@@ -28,7 +27,7 @@ const handleSignup = async () => {
     const confirmPassword = document.getElementById('confirm-password').value;
     const address = document.getElementById('address').value;
     const file = document.getElementById('id-document').files[0];
-
+    
     if (password !== confirmPassword) {
         displayMessage("Passwords do not match.", false);
         return;
@@ -47,11 +46,9 @@ const handleSignup = async () => {
         const response = await axios.post(`${pages.baseUrl}signup.php`, formData, {
             headers: { 'Content-Type': 'multipart/form-data' }
         });
-
+        console.log(response);
         if (response.data.success) {
-            console.log(response.data.message);
             displayMessage(response.data.message, true);
-
             checkUserVerification(response.data.message);
         } else {
             displayMessage(response.data.message, false);
@@ -100,9 +97,9 @@ const checkAdmin = async (user_id) => {
         const response = await axios.get(`${pages.baseUrl}checkAdmin.php?user_id=${user_id}`);
 
         if (response.data.success) {
-            console.log(response.data.message);
+            console.log(response.data);
             localStorage.setItem('user_id', user_id);
-            window.location.href = 'html/admin.html';
+            window.location.href = '../wallet-admin-frontend/adminPanel.html';
             
 
         } else {
@@ -115,10 +112,9 @@ const checkAdmin = async (user_id) => {
 }
 
 const checkUserVerification = async (user_id) => {
-    
     try {
         const response = await axios.get(`${pages.baseUrl}checkVerification.php?user_id=${user_id}`);
-
+        
         if (response.data.message) {
             console.log(response.data.message);
             localStorage.setItem('user_id', user_id);
@@ -157,8 +153,8 @@ const getProfile = async () => {
         const response = await axios.get(`${pages.baseUrl}getProfile.php?user_id=1`);
         if (response.data.success) {
             console.log(response.data.message);
-            document.getElementById('username').value = response.data.message.username;
-            document.getElementById('address').value = response.data.message.address;
+            document.getElementById('username').value = response.data.message[0];
+            document.getElementById('address').value = response.data.message[1];
         } else {
             displayMessage(response.data.message, false);
         }
@@ -215,8 +211,10 @@ const storeWalletId = (wallet_id) => {
     
     if (event.target.classList.contains('deposit')) {
         window.location.href = 'deposit.html';
+
     } else if (event.target.classList.contains('withdraw')) {
         window.location.href = 'withdraw.html';
+
     } else if (event.target.classList.contains('transfer')) {
         window.location.href = 'transfer.html';
     }
@@ -240,13 +238,13 @@ const handleDeposit = async () => {
         return;
     }
 
-    formdata = new FormData();
-    formdata.append('user_id', user_id);
-    formdata.append('amount', amount);
-    formdata.append('wallet_id', wallet_id);
+    formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('amount', amount);
+    formData.append('wallet_id', wallet_id);
 
     try {
-        const response = await axios.post(`${pages.baseUrl}deposit.php`, formdata);
+        const response = await axios.post(`${pages.baseUrl}deposit.php`, formData);
         console.log(response.data);
         displayMessage(response.data.message, response.data.success);
     } catch (error) {
@@ -303,7 +301,8 @@ const handleTransfer = async () => {
     formData.append('amount', amount);
 
     try {
-        const response = await axios.post(`${pages.baseUrl}transfer.php`,formData);
+        const response = await axios.post(`${pages.baseUrl}transfer.php`, formData);
+        console.log(response)
         displayMessage(response.data.message, response.data.success);
     } catch (error) {
         displayMessage("Transfer failed.", false);
