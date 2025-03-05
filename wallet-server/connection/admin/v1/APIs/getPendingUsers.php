@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../../../models/users.php";
-header('Content-Type: application/json');
+
 
 
 

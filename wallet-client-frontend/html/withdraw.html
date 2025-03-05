@@ -17,17 +17,20 @@
     </header>
     <main class="transaction">
         <section class="transaction-section">
-            <form action="withdraw" method="POST" class="transaction-form">
+            <div class="transaction-form">
 
                 <label for="withdraw-amount">Amount</label>
                 <input type="number" name="withdraw" id="withdraw" placeholder="Amount" required>
                 <div>
                     <button class="transaction-button" type="submit">withdraw</button>
                 </div>
-
+            </div>
         </section>
 
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/client.js"></script>
+    <script>pages.loadFor('withdraw')</script>
 </body>
 
 </html>

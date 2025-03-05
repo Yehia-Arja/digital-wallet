@@ -16,17 +16,20 @@
     </header>
     <main class="transaction">
         <section class="transaction-section">
-            <form action="deposit" method="POST" class="transaction-form">
+            <div class="transaction-form">
 
                 <label for="deposit">Amount</label>
                 <input type="number" name="deposit" id="deposit" placeholder="Amount" required>
                 <div>
                     <button class="transaction-button" type="submit">Deposit</button>
                 </div>
-
+            </div>
         </section>
 
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/client.js"></script>
+    <script>pages.loadFor('deposit')</script>
 </body>
 
 </html>

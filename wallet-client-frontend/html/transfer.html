@@ -17,7 +17,7 @@
     </header>
     <main class="transaction">
         <section class="transaction-section">
-            <form action="transfer" method="POST" class="transaction-form">
+            <div class="transaction-form">
 
                 <label for="transfer-wallet-number">Wallet number</label>
                 <input  name="transfer" id="transfer" placeholder="number" required>
@@ -27,10 +27,13 @@
                 <div>
                     <button class="transaction-button" type="submit">Transfer</button>
                 </div>
-
+            </div>
         </section>
 
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/client.js"></script>
+    <script>pages.loadFor('transfer')</script>
 </body>
 
 

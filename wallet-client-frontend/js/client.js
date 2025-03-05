@@ -150,9 +150,8 @@ const getProfile = async () => {
 
 
    
-
 pages.walletsPage = async () => {
-    const create_wallet = document.getElementById('create-wallet')
+    const create_wallet = document.getElementById('create-wallet');
     create_wallet.addEventListener('click', handleCreateWallet);
     const user_id = localStorage.getItem('user_id');
     if (!user_id) {
@@ -166,16 +165,16 @@ pages.walletsPage = async () => {
             response.data.message.forEach(wallet => {
                 const wallet_card = document.createElement('div');
                 wallet_card.classList.add('wallet-card');
-                wallet_card.setAttribute('wallet_id', wallet.id);
+                wallet_card.setAttribute('wallet_id', wallet.id);  // Storing wallet ID in an attribute
                 wallet_card.innerHTML = `
                     <div class="wallet-info">
                         <h2>Wallet Number: <span>${wallet.wallet_number}</span></h2>
                         <p>Balance: <span>$${wallet.balance}</span></p>
                     </div>
                     <div class="wallet-actions">
-                        <button class="button deposit" onclick="window.location.href='deposit.html?wallet_id=${wallet.id}'">Deposit</button>
-                        <button class="button withdraw" onclick="window.location.href='withdraw.html?wallet_id=${wallet.id}'">Withdraw</button>
-                        <button class="button transfer" onclick="window.location.href='transfer.html?wallet_id=${wallet.id}'">Transfer</button>
+                        <button class="button deposit" onclick="storeWalletId(${wallet.id})">Deposit</button>
+                        <button class="button withdraw" onclick="storeWalletId(${wallet.id})">Withdraw</button>
+                        <button class="button transfer" onclick="storeWalletId(${wallet.id})">Transfer</button>
                         <button class="button delete" onclick="deleteWallet(${wallet.id})">Delete</button>
                     </div>
                 `;
@@ -187,6 +186,107 @@ pages.walletsPage = async () => {
     } catch (error) {
         console.error('Error fetching wallets:', error);
         displayMessage('An error occurred. Try again later.', false);
+    }
+};
+
+
+const storeWalletId = (wallet_id) => {
+    localStorage.setItem('current_wallet_id', wallet_id);
+    
+    if (event.target.classList.contains('deposit')) {
+        window.location.href = 'deposit.html';
+    } else if (event.target.classList.contains('withdraw')) {
+        window.location.href = 'withdraw.html';
+    } else if (event.target.classList.contains('transfer')) {
+        window.location.href = 'transfer.html';
+    }
+};
+
+
+const getWalletIdFromLocalStorage = () => localStorage.getItem('current_wallet_id');
+
+pages.depositPage = () => {
+    document.querySelector(".transaction-button").addEventListener("click", handleDeposit);
+};
+
+const handleDeposit = async () => {
+    const wallet_id = getWalletIdFromLocalStorage();
+    console.log(wallet_id)
+    const amount = document.getElementById("deposit").value;
+    const user_id = localStorage.getItem('user_id');
+
+    if (!wallet_id || !amount) {
+        displayMessage("Missing wallet ID or amount.", false);
+        return;
+    }
+
+    formdata = new FormData();
+    formdata.append('user_id', user_id);
+    formdata.append('amount', amount);
+    formdata.append('wallet_id', wallet_id);
+
+    try {
+        const response = await axios.post(`${pages.baseUrl}deposit.php`, formdata);
+        console.log(response.data);
+        displayMessage(response.data.message, response.data.success);
+    } catch (error) {
+        displayMessage("Deposit failed.", false);
+    }
+};
+
+
+pages.withdrawPage = () => {
+    document.querySelector(".transaction-button").addEventListener("click", handleWithdraw);
+};
+
+const handleWithdraw = async () => {
+    const wallet_id = getWalletIdFromLocalStorage();
+    const amount = document.getElementById("withdraw").value;
+    const user_id = localStorage.getItem('user_id');
+
+    if (!wallet_id || !amount) {
+        displayMessage("Missing wallet ID or amount.", false);
+        return;
+    }
+    formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('wallet_id', wallet_id);
+    formData.append('amount', amount);
+    try {
+        const response = await axios.post(`${pages.baseUrl}withdraw.php`,formData);
+        displayMessage(response.data.message, response.data.success);
+    } catch (error) {
+        displayMessage("Withdrawal failed.", false);
+    }
+};
+
+
+pages.transferPage = () => {
+    document.querySelector(".transaction-button").addEventListener("click", handleTransfer);
+};
+
+const handleTransfer = async () => {
+    const sender_wallet_id = getWalletIdFromLocalStorage();
+    const receiver_wallet_number = document.getElementById("transfer").value;
+    const amount = document.getElementById("transfer-amount").value;
+    const user_id = localStorage.getItem('user_id');
+    
+
+    if (!sender_wallet_id || !receiver_wallet_number || !amount) {
+        displayMessage("Missing details for transfer.", false);
+        return;
+    }
+    formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('sender_wallet_id', sender_wallet_id);
+    formData.append('receiver_wallet_number', receiver_wallet_number);
+    formData.append('amount', amount);
+
+    try {
+        const response = await axios.post(`${pages.baseUrl}transfer.php`,formData);
+        displayMessage(response.data.message, response.data.success);
+    } catch (error) {
+        displayMessage("Transfer failed.", false);
     }
 };
 
