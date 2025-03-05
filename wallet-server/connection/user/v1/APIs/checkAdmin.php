@@ -8,12 +8,13 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization');
 if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
 
-    $user = User::getUserById($user_id);
-    $is_verified = $user['is_verified'];
-    if ($is_verified>0) {
-        echo json_encode(['success'=>true,'message'=>$is_verified]);
-    } else {
-        echo json_encode(['success'=>false,'message'=>'user not found or not verified']);
+    $user = User::checkAdmin($user_id);
+
+    if ($user['user_type_id'] === 1) {
+        echo json_encode(['success' => true, 'message' => $user['user_id']]);
+        return;
     }
+    echo json_encode(['success' => false, 'message' => 'not an admin']);
+    return;
 }
 ?>

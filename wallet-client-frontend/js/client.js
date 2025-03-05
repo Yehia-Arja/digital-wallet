@@ -82,11 +82,11 @@ const handleLogin = async () => {
         if (response.data.success) {
             console.log('Login successfully:');
             displayMessage('login successfully', true);
-            checkUserVerification(response.data.message);
+            checkAdmin(response.data.message);
  
         } else {
-            console.log('Login successfully:', response.data.message)
-            console.log('hello');
+            console.log('Login rejected:', response.data.message)
+            console.log(response.data.message)
             displayMessage(response.data.message, false);
         }
     } catch (error) {
@@ -94,8 +94,28 @@ const handleLogin = async () => {
         displayMessage('An error occurred during login.', false);
     }
 }
+const checkAdmin = async (user_id) => {
+
+     try {
+        const response = await axios.get(`${pages.baseUrl}checkAdmin.php?user_id=${user_id}`);
+
+        if (response.data.success) {
+            console.log(response.data.message);
+            localStorage.setItem('user_id', user_id);
+            window.location.href = 'html/admin.html';
+            
+
+        } else {
+            checkUserVerification(user_id);
+        }
+    } catch (error) {
+        console.error('Error checking verification status:', error);
+        displayMessage('Error checking verification status. Please try again later.', false);
+    }
+}
 
 const checkUserVerification = async (user_id) => {
+    
     try {
         const response = await axios.get(`${pages.baseUrl}checkVerification.php?user_id=${user_id}`);
 

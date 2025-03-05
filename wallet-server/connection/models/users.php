@@ -20,6 +20,15 @@ class User {
         $result = $sql->get_result()->fetch_assoc();
         return $result;
     }
+    public static function checkAdmin($user_id) {
+        global $conn;
+
+        $sql = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
+        $sql->bind_param("s", $user_id);
+        $sql->execute();
+        $result = $sql->get_result()->fetch_assoc();
+        return $result;
+    }
     
     public static function authenticate($email,$password) {
         global $conn;

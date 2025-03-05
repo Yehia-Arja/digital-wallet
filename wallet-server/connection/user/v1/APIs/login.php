@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         return;
     }
     $user = User::authenticate($email,$password);
+
     if ($user) {
         echo json_encode(['success' => true, 'message' => $user['user_id']]);
         return;
