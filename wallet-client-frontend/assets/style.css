@@ -198,13 +198,13 @@ html::-webkit-scrollbar {
 /*Start of login-signup,withdraw,deposit page*/
 .login-header,
 .signup-header,
-.withdraw-header {
+.transaction-header {
     text-align: center;
     font-size: 1em;
 }
 .login-header > h1,
 .signup-header > h1,
-.withdraw-header > h1 {
+.transaction-header > h1 {
     font-weight: bold;
     margin-top: 50px;
     margin-bottom: 20px;
@@ -212,29 +212,28 @@ html::-webkit-scrollbar {
 }
 .login-header > p,
 .signup-header > p,
-.withdraw-header > p {
+.transaction-header > p {
     font-size: 1em;
     color: gray;
 }
 
 .login-form label, 
 .signup-form label,
-.withdraw-form label {
+.transaction-form label {
     display: flex;
     color: white;
 }
 .login-main,
 .signup-main,
-.withdraw-main {
+.transaction {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .login-form,
 .signup-form,
-.withdraw-form {
+.transaction-form {
     display: flex;
-    background-color: rgba(20, 20, 20, 0.9);
     flex-direction: column;
     gap: 20px;
     padding: 20px;
@@ -242,7 +241,7 @@ html::-webkit-scrollbar {
 }
 .login-form input,
 .signup-form input,
-.withdraw-form input {
+.transaction-form input {
     border: none;
     border-bottom: 1px solid white;
     outline: none;
@@ -253,7 +252,7 @@ html::-webkit-scrollbar {
 }
 .login-button,
 .signup-button,
-.withdraw-button {
+.transaction-button {
     border: none;
     background-color: transparent;
     color: white;
@@ -263,14 +262,14 @@ html::-webkit-scrollbar {
 }
 .login-section div,
 .signup-section div,
-.withdraw-section div {
+.transaction-section div {
     margin-top: 10px;
     text-align: center;
 }
 
 .login-button:hover,
 .signup-button:hover,
-.withdraw-button:hover {
+.transaction-button:hover {
     border: 1px solid white;
     background-color: rgba(255,255,255,0.7);
     box-shadow: 0 0 45px rgba(255, 255, 255, 0.8);
@@ -280,8 +279,7 @@ html::-webkit-scrollbar {
 
 
 .redirect-signup:hover,
-.redirect-login:hover,
-.redirect-reset-password:hover {
+.redirect-login:hover {
     transition: 0.3s;
     color:white;
     border: 1px solid white;
@@ -292,15 +290,14 @@ html::-webkit-scrollbar {
     cursor: pointer;
 }
 
-/*End of login-signup withdraw deposit page*/
+/*End of login-signup withdraw deposit transfer page*/
 
 
 
 
 
-/*Start of wallet,cards page*/
+/*Start of wallet*/
 .wallet-main,
-.cards-main,
 .transaction-main {
     width: 100vw;
     background-color: black;
@@ -310,7 +307,6 @@ html::-webkit-scrollbar {
 }
  
 .wallet-container h1,
-.cards-container h1
 .transaction-container h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -318,8 +314,7 @@ html::-webkit-scrollbar {
     color: white;
 }
 
-.create-wallet,
-.create-card {
+.create-wallet{
     display: block;
     margin: 0 auto 20px;
     padding: 10px 20px;
@@ -332,27 +327,23 @@ html::-webkit-scrollbar {
     transition: background-color 0.3s ease;
 }
 
-.create-wallet:hover,
-.create-card:hover {
+.create-wallet:hover {
     opacity: 0.9;
 }
 
-.wallet-container,
-.cards-container {
+.wallet-container {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
 }
 
-.wallet-container h1,
-.cards-container h1 {
+.wallet-container h1 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2.5em;
 }
 
 .wallet-list,
-.cards-list,
 .transaction-container {
     display: flex;
     flex-direction: column;
@@ -371,7 +362,6 @@ html::-webkit-scrollbar {
 }
 
 .wallet-info h2,
-.card-info h2,
 .transaction-info h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
@@ -379,21 +369,18 @@ html::-webkit-scrollbar {
 }
 
 .wallet-info p,
-.card-info p,
 .transaction-info p {
     font-size: 1.1em;
     margin-bottom: 5px;
 }
 
 .wallet-info span,
-.card-info span,
 .transaction-info span {
     color: white;
     font-weight: bold;
 }
 
 .wallet-actions,
-.card-actions,
 .transaction-actions {
     display: flex;
     gap: 10px;
@@ -433,6 +420,36 @@ html::-webkit-scrollbar {
 
 /*End of wallet page*/
 
+/*Start of faqs page*/
+
+ .faq-container {
+    max-width: 700px;
+    margin: auto;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+ }
+
+ .faq {
+    border-bottom: 1px solid rgba(67, 67, 67, 0);
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+ }
+
+ .faq h3 {
+    margin: 0;
+    font-size: 18px;
+    color: white;
+ }
+
+ .answer {
+    display: none;
+    padding: 10px 0;
+    color: lightgray;
+ }
+ /*end of faqs page*/
 
 /* Responsive Design */
 @media (max-width: 768px) {

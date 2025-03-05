@@ -10,19 +10,18 @@
 
 <body>
     <a class="back-arrow" href="../html/services.html">&#8592;</a>
-    <div id="message-container"></div>
     <header class="transaction-header">
         <h1>Enter Amount</h1>
-        <p>Entered amount will be deducted from your wallet</p>
+        <p>Entered amount will be added to your wallet</p>
     </header>
     <main class="transaction">
         <section class="transaction-section">
-            <form action="withdraw" method="POST" class="transaction-form">
+            <form action="deposit" method="POST" class="transaction-form">
 
-                <label for="withdraw-amount">Amount</label>
-                <input type="number" name="withdraw" id="withdraw" placeholder="Amount" required>
+                <label for="deposit">Amount</label>
+                <input type="number" name="deposit" id="deposit" placeholder="Amount" required>
                 <div>
-                    <button class="transaction-button" type="submit">withdraw</button>
+                    <button class="transaction-button" type="submit">Deposit</button>
                 </div>
 
         </section>

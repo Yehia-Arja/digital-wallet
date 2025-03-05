@@ -13,21 +13,26 @@
     <div id="message-container"></div>
     <header class="transaction-header">
         <h1>Enter Amount</h1>
-        <p>Entered amount will be deducted from your wallet</p>
+        <p>Entered amount will be transferred to the wallet number you select</p>
     </header>
     <main class="transaction">
         <section class="transaction-section">
-            <form action="withdraw" method="POST" class="transaction-form">
+            <form action="transfer" method="POST" class="transaction-form">
 
-                <label for="withdraw-amount">Amount</label>
-                <input type="number" name="withdraw" id="withdraw" placeholder="Amount" required>
+                <label for="transfer-wallet-number">Wallet number</label>
+                <input  name="transfer" id="transfer" placeholder="number" required>
+                
+                <label for="transfer-amount">Amount</label>
+                <input type="number" name="transfer-amount" id="transfer-amount" placeholder="Amount" required>
                 <div>
-                    <button class="transaction-button" type="submit">withdraw</button>
+                    <button class="transaction-button" type="submit">Transfer</button>
                 </div>
 
         </section>
 
     </main>
 </body>
+
+
 
 </html>
