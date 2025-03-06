@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../wallet-client-frontend/assets/style.css">
+</head>
+<body>
+    <header class="login-header">
+        <h1>Welcome back</h1>
+        <p>use email or phone number to login</p>
+    </header>
+    <main class="login-main">
+        <section class="login-section">
+            <div id="message-container"></div>
+            <div class="login-form">
+                
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <div>
+                    <button id="login-button" class="login-button">L O G I N</button>
+                    <p>Don't have an account? <a class="redirect-signup" href="../wallet-client-frontend/html/signup.html">Sign up here</a></p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/client.js"></script>
+    <script>pages.loadFor('login')</script>
+</body>
+</html>

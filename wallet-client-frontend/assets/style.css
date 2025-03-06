@@ -1,0 +1,539 @@
+/* General Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    margin: 0;
+    background-color: rgba(13,13,13,1);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+.back-arrow {
+    font-size: 2em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+/*start of home,services page*/
+.header {
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.container {
+    width: 85%;
+    max-width: 1600px; 
+    margin: auto;
+    padding: 20px;
+    flex: 1; 
+}
+
+
+.nav-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 45px;
+    padding: 0;
+    margin: 0;
+}
+
+
+.nav-link {
+    color: rgba(211, 211, 211, 0.171);
+    font-size: 1em;    
+}
+
+.nav-link.active {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 15px;
+}
+
+.nav-link:hover {
+    color: rgba(211, 211, 211, 0.5);
+    text-decoration: none;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.header-message {
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.sub-text {
+    font-size: 0.8em;
+    color: rgba(187,187,187,1);
+    margin-top: 10px;
+}
+
+.get-started {
+    padding: 11px 24px;
+    color: white;
+    background-color: black;
+    font-size: 1.4em;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid white;
+    margin-top: 50px;
+    margin-bottom: 65px;
+    transition: all 0.3s;
+}
+
+.get-started:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 100%;
+    max-width: 300px;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card:hover a{
+    color: lightgray;
+}
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card-content {
+    font-size: 1.1em;
+    color: rgba(187, 187, 187, 0.461);
+}
+
+
+.footer {
+    margin-top: 80px;
+    width: 100%;
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-header {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.footer-text {
+    font-size: 1.2em;
+    display: flex;
+    gap: 20px;
+}
+
+.services-header {
+    margin-bottom: 100px;
+}
+/*End of home,services page*/
+
+
+/*Start of login-signup,withdraw,deposit page*/
+.login-header,
+.signup-header,
+.transaction-header {
+    text-align: center;
+    font-size: 1em;
+}
+.login-header > h1,
+.signup-header > h1,
+.transaction-header > h1 {
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: white
+}
+.login-header > p,
+.signup-header > p,
+.transaction-header > p {
+    font-size: 1em;
+    color: gray;
+}
+
+.login-form label, 
+.signup-form label,
+.transaction-form label {
+    display: flex;
+    color: white;
+}
+.login-main,
+.signup-main,
+.transaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-form,
+.signup-form,
+.transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 600px;
+}
+.login-form input,
+.signup-form input,
+.transaction-form input {
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white;
+    background-color: transparent;
+    height: 4.5vh;
+
+}
+.login-button,
+.signup-button,
+.transaction-button {
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.login-section div,
+.signup-section div,
+.transaction-section div {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.login-button:hover,
+.signup-button:hover,
+.transaction-button:hover {
+    border: 1px solid white;
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 0 0 45px rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+
+.redirect-signup:hover,
+.redirect-login:hover {
+    transition: 0.3s;
+    color:white;
+    border: 1px solid white;
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 0 0 45px rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/*End of login-signup withdraw deposit transfer page*/
+
+
+
+
+
+/*Start of wallet*/
+.wallet-main,
+.transaction-main {
+    width: 100vw;
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+    padding: 20px;
+}
+ 
+.wallet-container h1,
+.transaction-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: white;
+}
+
+.create-wallet{
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    background-color: rgb(0, 255, 136);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.create-wallet:hover {
+    opacity: 0.9;
+}
+
+.wallet-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wallet-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.wallet-list,
+.transaction-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wallet-card,
+.transaction-layout {
+    background-color: rgb(30, 30, 30);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wallet-info h2,
+.transaction-info h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: rgb(0, 255, 136);
+}
+
+.wallet-info p,
+.transaction-info p {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.wallet-info span,
+.transaction-info span {
+    color: white;
+    font-weight: bold;
+}
+
+.wallet-actions,
+.transaction-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.button.deposit {
+    background-color: rgb(0, 255, 136);
+    color: rgb(18, 18, 18);
+}
+
+.button.withdraw {
+    background-color: rgb(255, 107, 107);
+    color: rgb(18, 18, 18);
+}
+
+.button.delete {
+    background-color: rgb(255, 59, 59);
+    color: rgb(18, 18, 18);
+}
+.button.transfer {
+    background-color: rgb(0, 60, 255);
+    color: rgb(18, 18, 18);
+}
+.button:hover {
+    opacity: 0.9;
+}
+
+
+/*End of wallet page*/
+
+/*Start of faqs page*/
+
+ .faq-container {
+    max-width: 700px;
+    margin: auto;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+ }
+
+ .faq {
+    border-bottom: 1px solid rgba(67, 67, 67, 0);
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+ }
+
+ .faq h3 {
+    margin: 0;
+    font-size: 18px;
+    color: white;
+ }
+
+ .answer {
+    display: none;
+    padding: 10px 0;
+    color: lightgray;
+ }
+ /*end of faqs page*/
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wallet-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .wallet-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .btn {
+        width: 30%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header-message {
+        font-size: 2.2em;
+    }
+    .login-button, .signup-button, .get-started {
+        padding: 10px 15px;
+        font-size: 1.2em;
+    }
+    .logo {
+        width: 90px;
+        height: auto;
+    }
+    .footer {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 780px) {
+    .left-section > .personal-button {
+        display: none;
+    }
+    .left-section > .burger-menu {
+        display: block;
+    }
+    .container {
+        width: 95%;
+    }
+    .header-message {
+        font-size: 2em;
+    }
+    .logo {
+        width: 75px;
+        height: auto;
+    }
+    .footer {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer{
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-message {
+        font-size: 1.5em;
+    }
+    .login-button, .signup-button, .get-started {
+        padding: 8px 13px;
+        font-size: 1em;
+    }
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+    .logo {
+        width: 70px;
+        height: auto;
+    }
+    .footer {
+        font-size: 6px;
+    }
+}

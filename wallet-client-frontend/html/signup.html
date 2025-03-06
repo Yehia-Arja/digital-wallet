@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <header class="signup-header">
+        <h1>Sign up for free</h1>
+        <p>use email or phone number to create an account</p>
+    </header>
+    <main class="signup-main">
+        <section class="signup-section">
+            <div id="message-container"></div>
+            <div class="signup-form">
+                <label for="username">Full name</label>
+                <input type="text" name="username" id="username" placeholder="Full name">
+
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email">
+
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" id="phone" placeholder="Phone">
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required>
+
+                <label for="address">address</label>
+                <input type="address" name="address" id="address" placeholder="address" required>
+
+                <label for="id-document">Verification Document</label>
+                <input type="file" name="id-document" id="id-document" required>
+                <div>
+                    <button class="signup-button"id="signup-button">Sign Up</button>
+                    <p>Already have an account? <a class="redirect-login" href="../index.html">Log in here</a></p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/client.js"></script>
+    <script>pages.loadFor('signup')</script>
+</body>
+</html>
