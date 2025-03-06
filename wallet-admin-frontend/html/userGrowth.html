@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-section">
+                <a href="adminPanel.html">
+                    <img src="../assets/images/e-wallet-logo-vector-44767093.png" alt="logo"
+                        class="logo">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="adminPanel.html" class="nav-link active">Panel</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="header-text">
+                <h1 class="header-message">Admin Dashboard</h1>
+                <p class="sub-text">Manage users and transactions efficiently with a sophisticated approach.</p>
+
+                <section class="stats-container">
+                    <div class="stat">
+                        <h2 class="stat-title">Total Users</h2>
+                        <p class="stat-value" id="total-users"></p>
+                    </div>
+                    <div class="stat">
+                        <h2 class="stat-title">Total Transactions</h2>
+                        <p class="stat-value" id="total-transactions"></p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-header">
+            <p class="footer-text">My Wallet</p>
+        </div>
+        <div class="footer-text">
+            <p>&copy; 2025 Digital Wallet. All rights reserved.</p>
+            <p>Terms of Service | Privacy Policy</p>
+            <p>Contact us at Email: yehia.al.arja12@gmail.com</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>pages.loadFor('userGrowth')</script>
+</body>
+
+</html>

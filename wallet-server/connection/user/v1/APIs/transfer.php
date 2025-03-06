@@ -8,15 +8,14 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = $_POST['user_id'];
+    $user_id = $_POST['user_id'] ?? '';
     $sender_wallet_id = $_POST['sender_wallet_id'] ?? '';
     $receiver_wallet_number = $_POST['receiver_wallet_number'] ?? '';
     $amount = $_POST['amount'] ?? '';
     
     
-    if (!$amount || !$receiver_wallet_id || !$sender_wallet_number) {
+    if (empty($amount) || empty($receiver_wallet_number) || empty($sender_wallet_id)) {
         echo json_encode(['success' => false, 'message' => 'missing information']);
         return;
     }
@@ -26,14 +25,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['success' => false, 'message' => 'invalid wallet number']);
         return;
     }
-    $balance = Wallet::getBalance($wallet_id);
-    $new_balance = $balance - $amount;
-    
+
+    if (!Wallet::checkWalletNumber($receiver_wallet_number)) {
+        echo json_encode(['success' => false, 'message' => 'invalid wallet number']);
+        return;
+    }
+
+    $balance = Wallet::getBalance($sender_wallet_id);
+
     if ($amount>$balance) {
         echo json_encode(['success' => false, 'message' => 'insufficient funds']);
         return;
     }
 
+    $new_balance = $balance - $amount;
+    
     Wallet::updateWalletBalance($sender_wallet_id, $new_balance);
 
     $receiver_wallet_id = Wallet::getWalletIdByNumber($receiver_wallet_number);
