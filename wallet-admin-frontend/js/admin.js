@@ -5,6 +5,57 @@ pages.loadFor = (page) => {
 }
 pages.baseUrl = "http://localhost//digital-wallet/wallet-server/connection/admin/v1/APIs/";
 
+pages.loginPage = () => {
+    const loginButton = document.getElementById('login-button')
+    loginButton.addEventListener('click', handleLogin);
+}
+
+const handleLogin = async () => {
+    const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const formData = new FormData();
+    formData.append('password', password);
+    formData.append('email', email);
+
+    try {
+        const response = await axios.post(`${pages.baseUrl}login.php`, formData,{
+            headers: { 'Content-Type': 'multipart/form-data' }
+        });
+
+        if (response.data.success) {
+            console.log('Login successfully:');
+            displayMessage('login successfully', true);
+            checkAdmin(response.data.message);
+ 
+        } else {
+            console.log('Login rejected:', response.data.message)
+            console.log(response.data.message)
+            displayMessage(response.data.message, false);
+        }
+    } catch (error) {
+        console.error('Login failed:', error);
+        displayMessage('An error occurred during login.', false);
+    }
+}
+const checkAdmin = async (user_id) => {
+
+     try {
+        const response = await axios.get(`${pages.baseUrl}checkAdmin.php?user_id=${user_id}`);
+
+        if (response.data.success) {
+            console.log(response.data);
+            localStorage.setItem('user_id', user_id);
+            window.location.href = '../html/adminPanel.html';
+            
+
+        } else {
+            checkUserVerification(user_id);
+        }
+    } catch (error) {
+        console.error('Error checking verification status:', error);
+        displayMessage('Error checking verification status. Please try again later.', false);
+    }
+}
 pages.userGrowthPage = async () => {
     try {
         const response = await axios.get(`${pages.baseUrl}getUsersTransactions.php`);
