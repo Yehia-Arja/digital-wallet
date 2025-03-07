@@ -115,7 +115,7 @@ const checkUserVerification = async (user_id) => {
     try {
         const response = await axios.get(`${pages.baseUrl}checkVerification.php?user_id=${user_id}`);
         
-        if (response.data.message) {
+        if (response.data.success) {
             console.log(response.data.message);
             localStorage.setItem('user_id', user_id);
             window.location.href = 'html/home.html';
